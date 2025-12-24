@@ -12,12 +12,14 @@ exports.add_new_role = class add_new_role {
        // this.dash_per_btn = this.dash_per.getByRole("label",{name: "View"});
 
         this.roles_per = page.locator("//div[@id='row-roles']//div[@class='MuiStack-root css-razd9h']//label[1]");
+        this.roles_per_create = page.locator("//div[@id='row-roles']//div[@class='MuiStack-root css-razd9h']//label[2]");
         // this.roles_per_btn = this.roles_per.getByRole('button', { name: 'Full' });
 
-        
-        this.members_per_cell = page.locator("#cell-2-members");
-        this.members_per_btn = this.members_per_cell.getByRole('button', { name: 'View' });
+        // this.member_select_All = page.locator("//body/div[@id='root']/div[@class='main-content MuiBox-root css-0']/div[@class='body-content MuiBox-root css-0']/div[@class='MuiContainer-root MuiContainer-maxWidthLg css-1cg8y6n']/form/div[@class='MuiStack-root add-role-wrapper css-1v8my8o']/div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 css-12vtj1p']/div[@class='sc-fVHBlr ecMQWb table-ui start-header add-role-table-ui']/div[@class='sc-ipUnzB cTGbf']/div[@role='table']/div[@role='rowgroup']/div[@id='row-members']/div[@id='cell-2-members']/div[@class='MuiBox-root css-0']/div[@class='MuiStack-root css-pb4y8c']/label[1]")
+        this.members_per_view = page.locator("//div[@id='cell-2-members']//div[@class='MuiStack-root css-razd9h']//label[1]");
+        //  this.members_per_btn = this.members_per_cell.getByRole('button', { name: 'View' });
 
+        this.tag_select_All = page.locator("//body/div[@id='root']/div[@class='main-content MuiBox-root css-0']/div[@class='body-content MuiBox-root css-0']/div[@class='MuiContainer-root MuiContainer-maxWidthLg css-1cg8y6n']/form/div[@class='MuiStack-root add-role-wrapper css-1v8my8o']/div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 css-12vtj1p']/div[@class='sc-fVHBlr ecMQWb table-ui start-header add-role-table-ui']/div[@class='sc-ipUnzB cTGbf']/div[@role='table']/div[@role='rowgroup']/div[@id='row-tags']/div[@id='cell-2-tags']/div[@class='MuiBox-root css-0']/div[@class='MuiStack-root css-pb4y8c']/label[1]");
         this.save_btn = page.getByRole('button',{name: 'Save'});
 
          this.success_toast = page.locator('.Toastify__toast--success');        
@@ -46,8 +48,11 @@ exports.add_new_role = class add_new_role {
 
         //Selecting the Module Permissions
         await this.dash_per.click();
-        await this.roles_per_btn.click();
-        await this.members_per_btn.click();
+        await this.roles_per.click();
+        await this.roles_per_create.click();
+        // await this.member_select_All.click();
+        await this.members_per_view.click();
+        await this.tag_select_All.click();
 
         // click on the save button
         await this.save_btn.click();
@@ -56,7 +61,7 @@ exports.add_new_role = class add_new_role {
         const alert_text = await this.success_toast.textContent();
         console.log(alert_text);
         expect(alert_text).toBe("Role created successfully");
-        
+        await this.page.pause();        
     }
 
 }

@@ -5,55 +5,68 @@ const { role } = require('../Page-object_model/role_management_module');
 const { add_new_role } = require('../Page-object_model/Add_new_role');
 const { edit_role } = require('../Page-object_model/Edit_role_name');
 const { Delete_role } = require('../Page-object_model/delete_role');
+const { members_cls } = require('../Page-object_model/Members_Module');
 
 let crd;
 test.describe('', () => {
-    test('Login Test Case', async ({ browser }) => {
+    test('Login Test Case', async ({context,page}) => {
 
-        const context = await browser.newContext();
-        const page = await context.newPage();
+        // const context = await browser.newContext();
+        // const page = await context.newPage();
 
         const login_ob = new Login(page);
 
-        await login_ob.goTO();
+       
 
-        await login_ob.login_feature();
+        // await login_ob.login_feature();
+
+        await login_ob.login_API();
+        await login_ob.cookies_add();
+        await login_ob.goTO();
 
         //expect the page to have commozi url after login
         const dash = new Das(page);
         await dash.assert_URL();
 
+        /*
+                const role_ob = new role(page);
         
-        const role_ob = new role(page);
-
-        //click on the CRM Menu
-        //click on the Role Management option
-        await role_ob.role_list_page();
-
-        //Assert the Page URL and Text
-        await role_ob.Verify_role_URL();
-
-        //click to add new role
-        const add_roles = new add_new_role(page);
-
-       await add_roles.new_role('test_aut_23', 'only_use for testing purpose');
-
-        //Edit role name
-        const edit_roles = new edit_role(page);
-        // here. rol variable use in the another file variable
+                //click on the CRM Menu
+                //click on the Role Management option
+                await role_ob.role_list_page();
         
-        await edit_roles.edit_role_name(add_roles.rol,'harshad 7');
-        await edit_roles.search_update_name();
-        await edit_roles.Verify_update_name();
-       await edit_roles.clear_searchbox();
-
-        //Delete the role
-        const delete_role_ob = new Delete_role(page);
-        await delete_role_ob.deleted_roel(edit_roles.rol_edit);
-        await delete_role_ob.search_after_delete(edit_roles.rol_edit);
+                //Assert the Page URL and Text
+                await role_ob.Verify_role_URL();
         
+                //click to add new role
+                const add_roles = new add_new_role(page);
+        
+                await add_roles.new_role('test_aut_24', 'only_use for testing purpose');
+                await page.pause();
+                //Edit role name
+                const edit_roles = new edit_role(page);
+                // here. rol variable use in the another file variable
+        
+                await edit_roles.edit_role_name(add_roles.rol, 'harshad 5');
+                await edit_roles.search_update_name();
+                await edit_roles.Verify_update_name();
+                await edit_roles.clear_searchbox();
+        
+                //Delete the role
+                const delete_role_ob = new Delete_role(page);
+                await delete_role_ob.deleted_roel(edit_roles.rol_edit);
+                await delete_role_ob.search_after_delete(edit_roles.rol_edit);*/
 
-      
+        //Members Module
+
+        const members_ob = new members_cls(page);
+        await members_ob.members();
+        // await members_ob.search_member();
+        await members_ob.check_member_count();
+        await members_ob.check_table_record();
+
+        await members_ob.filter_functionality();
+
 
         /*
                
