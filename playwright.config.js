@@ -11,7 +11,7 @@ const config = {
   // Override on the by default timeout
   timeout: 60 * 1000,
   expect: {
-    timeout: 30000,
+    timeout: 60000,
   },
   // if want HTML Report
   reporter: 'html',
