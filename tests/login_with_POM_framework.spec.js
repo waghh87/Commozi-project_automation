@@ -66,6 +66,7 @@ test.describe('', () => {
         await members_ob.check_table_record();
 
         await members_ob.filter_functionality();
+        await members_ob.verify_user_records_with_pagination();
 
 
         /*

@@ -10,7 +10,8 @@ exports.Das = class Das {
 
     async assert_URL() {
         await this.page.waitForLoadState('networkidle');
-        await expect(this.page).toHaveURL("https://staging-crm.commozi.com/dashboard");
+
+       await expect(this.page).toHaveURL("https://staging-crm.commozi.com/dashboard");
         await expect(this.txt).toContainText('Dashboard');
     }
 }

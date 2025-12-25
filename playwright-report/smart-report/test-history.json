@@ -1,0 +1,199 @@
+{
+  "runs": [],
+  "tests": {
+    "login_with_POM_framework.spec.js::Login Test Case": [
+      {
+        "passed": false,
+        "duration": 60286,
+        "timestamp": "2025-12-25T10:42:06.697Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 61027,
+        "timestamp": "2025-12-25T10:42:06.697Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 27075,
+        "timestamp": "2025-12-25T10:43:10.214Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 28495,
+        "timestamp": "2025-12-25T10:43:10.214Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 60478,
+        "timestamp": "2025-12-25T10:47:19.633Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 60450,
+        "timestamp": "2025-12-25T10:47:19.633Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 60571,
+        "timestamp": "2025-12-25T10:48:51.182Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 63006,
+        "timestamp": "2025-12-25T10:48:51.182Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": true,
+        "duration": 26129,
+        "timestamp": "2025-12-25T10:51:56.579Z",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 152292,
+        "timestamp": "2025-12-25T10:51:56.579Z",
+        "skipped": false,
+        "retry": 0
+      }
+    ]
+  },
+  "summaries": [
+    {
+      "runId": "run-1766654760803",
+      "timestamp": "2025-12-25T09:26:00.803Z",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 70744,
+      "passRate": 0
+    },
+    {
+      "runId": "run-1766654878412",
+      "timestamp": "2025-12-25T09:27:58.412Z",
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 63409,
+      "passRate": 50
+    },
+    {
+      "runId": "run-1766655093901",
+      "timestamp": "2025-12-25T09:31:33.901Z",
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 64474,
+      "passRate": 50
+    },
+    {
+      "runId": "run-1766657090679",
+      "timestamp": "2025-12-25T10:04:50.679Z",
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 63243,
+      "passRate": 50
+    },
+    {
+      "runId": "run-1766657216636",
+      "timestamp": "2025-12-25T10:06:56.636Z",
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 62993,
+      "passRate": 50
+    },
+    {
+      "runId": "run-1766659261513",
+      "timestamp": "2025-12-25T10:41:01.513Z",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 65184,
+      "passRate": 0
+    },
+    {
+      "runId": "run-1766659359369",
+      "timestamp": "2025-12-25T10:42:39.369Z",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 30844,
+      "passRate": 0
+    },
+    {
+      "runId": "run-1766659575221",
+      "timestamp": "2025-12-25T10:46:15.221Z",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 64411,
+      "passRate": 0
+    },
+    {
+      "runId": "run-1766659663442",
+      "timestamp": "2025-12-25T10:47:43.442Z",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 0,
+      "duration": 67740,
+      "passRate": 0
+    },
+    {
+      "runId": "run-1766659763142",
+      "timestamp": "2025-12-25T10:49:23.142Z",
+      "total": 2,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 2,
+      "slow": 1,
+      "duration": 153437,
+      "passRate": 100
+    }
+  ]
+}

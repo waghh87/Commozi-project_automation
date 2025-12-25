@@ -43,6 +43,8 @@ exports.members_cls = class members_cls {
     async members() {
         await this.crm_drop.click();
         await this.members_btn.click();
+
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         const title = await this.page.locator("(//p[@class='MuiTypography-root MuiTypography-body1 css-fyswvn'])").textContent();
         expect(title).toBe("Members");
     }
@@ -55,7 +57,8 @@ exports.members_cls = class members_cls {
         expect(name).toMatch("Daisy Bhavsar");
 
         //click the clear button which show on hover action
-        await this.page.waitForTimeout(3000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
+
         await this.search_by_name.hover();
         await this.clear_btn.waitFor({ state: 'visible' });
         await this.clear_btn.click();
@@ -63,7 +66,7 @@ exports.members_cls = class members_cls {
         // await this.search_by_email.clear();
 
         //Search by email
-        await this.page.waitForTimeout(3000);
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.search_by_email.fill("daisybhavsar185@gmail.com");
 
         const email = await this.page.locator('div.sc-eqNDNG.lnqPEg.rdt_TableBody p').filter({ hasText: 'daisybhavsar185@gmail.com' }).textContent();
@@ -91,8 +94,9 @@ exports.members_cls = class members_cls {
     }
 
     async check_member_count() {
-        await this.page.locator("//div[@id = 'loader-wrapper']").waitFor({ state: 'hidden' });
-        await this.page.waitForTimeout(3000);
+        //click the clear button which show on hover action
+        await this.page.waitForSelector('.loader', { state: 'hidden' });
+        // await this.page.waitForTimeout(3000);
 
         const All_count = await this.page.locator('div .css-r42wmg span').nth(0).textContent();
         console.log(All_count);
@@ -100,14 +104,9 @@ exports.members_cls = class members_cls {
     }
 
     async check_table_record() {
-        /*  await this.page.locator('div .select__dropdown-indicator').nth(1).click();
-  
-          const page_drop_down = await this.page.getByRole('listbox');
-          await page_drop_down.getByRole('option', {name: '100'}).click();*/
 
-        await this.page.locator("//div[@id = 'loader-wrapper']").waitFor({ state: 'hidden' });
-
-        await this.page.waitForTimeout(3000);
+        // await this.page.waitForSelector('.loader', { state: 'hidden' });
+        // await this.page.waitForTimeout(3000);
         const number_of_records = await this.page.locator('div .select__single-value.select__single-value.css-1dimb5e-singleValue').nth(1).textContent();
         console.log(number_of_records);
 
@@ -131,17 +130,12 @@ exports.members_cls = class members_cls {
         //click on the last button.
         const click_lastbutton = await pagination_button.nth(btn_count - 2).last();
         await click_lastbutton.click();
-
-
-
-
     }
 
     async filter_functionality() {
-
+        // await this.page.waitForSelector('.loader', { state: 'hidden' });
         await this.com_drop_btn.first().click();
         await this.community_btn.click();
-
         await this.filter_btn.click();
 
         await this.subs_interval_drop_down_btn.click();
@@ -160,8 +154,47 @@ exports.members_cls = class members_cls {
         await this.role_option.click();
 
         await this.apply_btn.click();
-
-        await this.page.pause();
-
     }
+
+    async verify_user_records_with_pagination() {
+        let pagenumber = 1;
+
+        while (true) {
+            console.log(`\n processing page ${pagenumber}`);
+
+            //wait for current page table to load
+            await this.page.locator('.rdt_TableBody').waitFor({ state: 'visible' });
+
+            // Print current page rows (row-wise as requested)
+            const rows = this.page.locator('.rdt_TableBody [role="row"]:not(.rdt_TableRow--select-all-rows)');
+            const rowCount = await rows.count();
+            console.log(`total rows:, ${rowCount} rows on page ${pagenumber}`);
+
+            for (let i = 0; i < rowCount; i++) {
+                const filter_records = await rows.nth(i).textContent();
+                console.log(`Row ${i + 1}/${rowCount}:`);
+                console.log(filter_records?.trim());
+                console.log('─'.repeat(150));
+            }
+
+            // Find Next button
+            const next_button = await this.page.locator("//button[@aria-label= 'Go to next page']");
+
+            //  Check if next button exists and is enabled
+            if (await next_button.count() === 0 || await next_button.isDisabled()) {
+                console.log("Next button is disabled");
+                break;
+            }
+
+            console.log('clicking Next button');
+            await next_button.click();
+            await this.page.waitForLoadState('domcontentloaded');
+            await this.page.waitForTimeout(2000);
+
+            pagenumber++;
+        }
+
+        console.log(`\n pagination completed! ${pagenumber} pages`);
+    }
+
 }
